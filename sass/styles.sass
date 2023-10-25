@@ -1,2 +1,130 @@
-@use '_variables'
-@use '_colors'
+@use 'variables'
+@use 'colors'
+@use 'mixins'
+
+*
+    font-family: 'Roboto'
+    padding: 0
+    margin: 0
+    box-sizing: border-box
+
+body
+    background-color: colors.$bg-color
+
+    a
+        color: colors.$text-color
+        text-decoration: none
+        transition: .4s
+
+    ul
+        list-style: none
+
+.header
+    display: flex
+    justify-content: space-between
+    @include mixins.container
+
+    @include mixins.mobile
+        padding: 1.1rem
+
+    &-brand //.header-brand
+        color: colors.$primary-color
+        font-size: 3rem
+    &-navbar //.header-navbar
+        ul
+            height: 100%
+            @include mixins.flex-center
+
+            @include mixins.mobile
+                display: none
+            
+            li
+                margin: 0 1rem
+                text-transform: uppercase
+                font-size: .8rem
+           
+                .active
+                    color: colors.$secondary-color
+
+        a
+            &:hover
+                color: colors.$secondary-color
+    &-social-media
+        ul
+            @include mixins.flex-center
+            height: 100%
+
+            @include mixins.mobile
+                display: none
+
+            li
+                margin: 0 1rem
+
+                a
+                    &:hover
+                        color: colors.$primary-color
+
+.gallery
+    @include mixins.flex-center
+    @include mixins.container
+    flex-wrap: wrap
+    justify-content: space-between
+    padding: 0
+    @include mixins.mobile
+        flex-direction: column
+
+    &-card //.gallery-card
+        width: 31%
+        height: 400px
+        margin-bottom: 4%
+        @include mixins.flex-center
+        flex-direction: column
+        color: colors.$primary-color
+        
+        @include mixins.mobile
+            flex-direction: column
+            width: 90%
+            margin-bottom: 6%
+
+        &-title
+            color: colors.$primary-color
+            font-size: 2rem
+            font-weight: 300
+            margin-bottom: 1rem
+        &-btn 
+            padding: .6rem 2rem
+            border: 2px solid colors.$text-color
+            font-weight: 400
+            text-transform: uppercase
+            letter-spacing: 1px
+
+            &:hover
+                background-color: colors.$primary-color
+                color: colors.$bg-color
+
+    #card1
+        @include mixins.bg-img('animais.jpg')
+    #card2
+        @include mixins.bg-img('arquitetura.jpg')
+    #card3
+        @include mixins.bg-img('cidade.jpg')
+    #card4
+        @include mixins.bg-img('decoracao.jpg')
+    #card5
+        @include mixins.bg-img('esportes.jpg')
+    #card6
+        @include mixins.bg-img('natureza.jpg')
+    #card7
+        @include mixins.bg-img('paisagem.jpg')
+    #card8
+        @include mixins.bg-img('pessoas.jpg')
+    #card9
+        @include mixins.bg-img('refeicoes.jpg')
+
+footer
+    text-align: center
+    padding-bottom: 2rem
+
+    span
+        color: colors.$secondary-color
+        font-weight: bold
